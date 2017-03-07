@@ -10,12 +10,13 @@ express.listen(process.env.PORT || 80, function () {
     console.log("Already listening")
 })
 
+mongoose.connect('mongodb://chanx:nandapur@ds121190.mlab.com:21190/heroku_0nlgsktq')
+var mixed = mongoose.Schema.Types.Mixed;
+var mailSchema = mongoose.Schema({
+    data: mixed
+})
 express.post('/', function (req, res) {
-    var mixed = mongoose.Schema.Types.Mixed;
-    var mailSchema = mongoose.Schema({
-        data: mixed
-    })
-    var m = mongoose.model('mail',mailSchema);
+    var m = mongoose.model('mailer',mailSchema);
     var doc= new m ({
         data: req.body
     })
