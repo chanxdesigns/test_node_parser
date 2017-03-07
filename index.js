@@ -25,3 +25,11 @@ express.post('/', function (req, res) {
     });
     res.send(200);
 });
+
+express.get('/data', function (req,res)
+{
+    var C = mongoose.collection('mailer');
+    C.find().exec(function (err, resp) {
+        console.log(resp);
+    })
+})
