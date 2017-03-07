@@ -4,7 +4,7 @@ var fs = require('fs'),
 
 express.use(body_parser.raw);
 
-express.listen(80, function () {
+express.listen(process.env.PORT || 80, function () {
     console.log("Already listening")
 })
 
