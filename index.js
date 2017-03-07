@@ -8,6 +8,6 @@ express.listen(process.env.PORT || 80, function () {
     console.log("Already listening")
 })
 
-express.get('/', function (req, res) {
+express.post('/', function (req, res) {
     console.log(req.body);
 });
