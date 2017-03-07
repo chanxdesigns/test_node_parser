@@ -3,10 +3,13 @@ var fs = require('fs'),
     express = require('express')(),
     mailparser = require('mailparser').simpleParser;
 
+express.use(body_parser.urlencoded({ extended: false }));
+
 express.listen(process.env.PORT || 80, function () {
     console.log("Already listening")
 })
 
 express.post('/', function (req, res) {
-    console.log(req, res);
+   console.log(req.body);
+   res.send(req.body);
 });
