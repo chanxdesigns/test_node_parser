@@ -1,0 +1,17 @@
+{
+  "name": "test_node_parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mailgun-js": "^0.8.2",
+    "websocket": "^1.0.24"
+  }
+}
