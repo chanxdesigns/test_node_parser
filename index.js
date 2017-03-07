@@ -10,7 +10,5 @@ express.listen(process.env.PORT || 80, function () {
 })
 
 express.post('/', function (req, res) {
-   mailparser(req.body, function (err, data) {
-       console.log(data);
-   })
+
 });
