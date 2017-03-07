@@ -10,6 +10,6 @@ express.listen(process.env.PORT || 80, function () {
 })
 
 express.post('/', function (req, res) {
-    console.log(req.body.sender);
-    res.statusCode(200);
+    console.log(req.body.sender, res.body['message-url']);
+    res.status(200);
 });
