@@ -10,5 +10,6 @@ express.listen(process.env.PORT || 80, function () {
 })
 
 express.post('/', function (req, res) {
+    res.send("yeah");
    console.log(req.body);
 });
