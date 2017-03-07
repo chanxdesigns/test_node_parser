@@ -19,4 +19,5 @@ express.post('/', function (req, res) {
         data: req.body
     })
     doc.save();
+    res.send(200);
 });
