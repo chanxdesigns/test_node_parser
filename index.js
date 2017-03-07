@@ -11,8 +11,9 @@ express.listen(process.env.PORT || 80, function () {
 })
 
 express.post('/', function (req, res) {
+    var mixed = mongoose.Schema.Types.Mixed;
     var mailSchema = mongoose.Schema({
-        data: Schema.Types.Mixed
+        data: mixed
     })
     var m = mongoose.model('mail',mailSchema);
     var doc= new m ({
