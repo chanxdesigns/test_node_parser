@@ -12,12 +12,14 @@ express.listen(process.env.PORT || 80, function () {
 
 express.post('/', function (req, res) {
     var mailSchema = mongoose.Schema({
-        data: {}
+        data: Schema.Types.Mixed
     })
     var m = mongoose.model('mail',mailSchema);
     var doc= new m ({
         data: req.body
     })
-    doc.save();
+    doc.save(function (err, data) {
+        console.log(data);
+    });
     res.send(200);
 });
