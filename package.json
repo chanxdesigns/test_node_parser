@@ -13,6 +13,7 @@
     "express": "^4.15.2",
     "mailgun-js": "^0.8.2",
     "mailparser": "^2.0.2",
+    "mongoose": "^4.8.6",
     "websocket": "^1.0.24"
   }
 }
