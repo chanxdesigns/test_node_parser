@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "busboy": "^0.2.14",
     "express": "^4.15.2",
     "mailgun-js": "^0.8.2",
     "mailparser": "^2.0.2",

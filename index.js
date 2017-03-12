@@ -1,10 +1,8 @@
 var fs = require('fs'),
-    body_parser = require('body-parser'),
+    busboy = require('busboy'),
     express = require('express')(),
     mailparser = require('mailparser').simpleParser,
     mongoose = require('mongoose');
-
-express.use(body_parser.urlencoded({ extended: false }));
 
 express.listen(process.env.PORT || 80, function () {
     console.log("Already listening")
@@ -16,14 +14,18 @@ var mailSchema = mongoose.Schema({
     data: mixed
 })
 express.post('/', function (req, res) {
-    var m = mongoose.model('mailer',mailSchema);
-    var doc= new m ({
-        data: req.body
-    })
-    doc.save(function (err, data) {
-        console.log(data);
+    //var m = mongoose.model('mailer',mailSchema);
+    var bboy = new busboy({headers: req.headers});
+    console.log(bboy)
+    bboy.on('field', function (fieldname, val, fieldnameTruncated, valTruncated) {
+        console.log(fieldname, val, fieldnameTruncated, valTruncated)
     });
-    res.send(200);
+    bboy.on('finish', function() {
+        console.log('Done parsing form!');
+        res.writeHead(303, { Connection: 'close', Location: '/' });
+        res.end();
+    });
+    req.pipe(bboy);
 });
 
 express.get('/data', function (req,res)
