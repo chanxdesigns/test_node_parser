@@ -4,6 +4,10 @@ const mail = "Have good day dea everyday is a \r\nnew day.";
  | Generate Extraction Template
  |--------------------------------------*/
 
+function MailObj () {}
+
+MailObj.prototype.msg = mail;
+
 /**
  * Find the Starting Position
  * @constructor
@@ -11,11 +15,7 @@ const mail = "Have good day dea everyday is a \r\nnew day.";
 function StartPos () {
 }
 
-/**
- * Default Mail Storage
- * @type {string}
- */
-StartPos.prototype.msg = mail;
+StartPos.prototype = Object.create(MailObj.prototype);
 
 /**
  * Match text before the specified keyword
@@ -23,7 +23,7 @@ StartPos.prototype.msg = mail;
  * @returns {*}
  */
 StartPos.prototype.textBeforeMatch = function (txt) {
-    return this.msg = this.msg.substr(0, mail.indexOf(txt)).trim();
+    return this.msg = this.msg.substr(mail.indexOf(txt)-1).trim();
 }
 
 /**
@@ -35,5 +35,14 @@ StartPos.prototype.textAfterMatch = function (txt) {
     return this.msg = this.msg.substr(mail.indexOf(txt) + txt.length).trim();
 }
 
-console.log(StartPos.prototype.textBeforeMatch('day'))
-console.log(StartPos.prototype.textAfterMatch('Have').toUpperCase())
+/**
+ * Find End Position
+ */
+function EndPos () {}
+
+EndPos.prototype.textBeforeMatch = function (txt) {
+    //return this.msg
+}
+
+console.log(StartPos.prototype.textBeforeMatch('ea'))
+//console.log(StartPos.prototype.textAfterMatch('Have').toUpperCase())
